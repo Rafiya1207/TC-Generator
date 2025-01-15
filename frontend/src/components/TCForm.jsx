@@ -11,42 +11,49 @@ const TCForm = () => {
 				name="certificateNumber"
 				margin="normal"
 				sx={{ width: "600px" }}
+				required
 			/>
 			<TextField
 				label="Admission Number"
 				name="admissionNumber"
 				margin="normal"
 				sx={{ width: "600px" }}
+				required
 			/>
 			<TextField
 				label="Fullname"
 				name="fullname"
 				margin="normal"
 				sx={{ width: "600px" }}
+				required
 			/>
 			<TextField
 				label="Father's Full Name"
 				name="fatherName"
 				margin="normal"
 				sx={{ width: "600px" }}
+				required
 			/>
 			<TextField
 				label="Nationality"
 				name="nationality"
 				margin="normal"
 				sx={{ width: "600px" }}
+				required
 			/>
 			<TextField
 				label="Religion"
 				name="religion"
 				margin="normal"
 				sx={{ width: "600px" }}
+				required
 			/>
 			<TextField
 				label="Caste"
 				name="caste"
 				margin="normal"
 				sx={{ width: "600px" }}
+				required
 			/>
 			<TextField
 				label="Date of Birth"
@@ -55,6 +62,7 @@ const TCForm = () => {
 				sx={{ width: "600px" }}
 				type="date"
 				InputLabelProps={{ shrink: true }}
+				required
 			/>
 			<TextField
 				label="Date of Admission"
@@ -63,6 +71,7 @@ const TCForm = () => {
 				sx={{ width: "600px" }}
 				type="date"
 				InputLabelProps={{ shrink: true }}
+				required
 			/>
 			<TextField
 				label="Date of Leaving"
@@ -71,6 +80,7 @@ const TCForm = () => {
 				sx={{ width: "600px" }}
 				type="date"
 				InputLabelProps={{ shrink: true }}
+				required
 			/>
 			<TextField
 				label="Date of Issuing Transfer Certificate"
@@ -79,24 +89,28 @@ const TCForm = () => {
 				sx={{ width: "600px" }}
 				type="date"
 				InputLabelProps={{ shrink: true }}
+				required
 			/>
 			<TextField
 				label="Year/Semester"
 				name="yearSem"
 				margin="normal"
 				sx={{ width: "600px" }}
+				required
 			/>
 			<TextField
 				label="Course"
 				name="course"
 				margin="normal"
 				sx={{ width: "600px" }}
+				required
 			/>
 			<TextField
 				label="PIN"
 				name="pin"
 				margin="normal"
 				sx={{ width: "600px" }}
+				required
 			/>
 			<div className="tc-form-radios">
 				<FormLabel component="legend">Are you promoted to higher class?</FormLabel>
@@ -104,8 +118,8 @@ const TCForm = () => {
 					row
 					name="promoted"
 				>
-					<FormControlLabel value="Yes" control={<Radio />} label="Yes" sx={{ color: "rgba(0, 0, 0, 0.6)" }} />
-					<FormControlLabel value="No" control={<Radio />} label="No" sx={{ color: "rgba(0, 0, 0, 0.6)" }} />
+					<FormControlLabel value="Yes" control={<Radio required/>} label="Yes" sx={{ color: "rgba(0, 0, 0, 0.6)" }} />
+					<FormControlLabel value="No" control={<Radio required/>} label="No" sx={{ color: "rgba(0, 0, 0, 0.6)" }} />
 				</RadioGroup>
 
 				<FormLabel component="legend">Have you paid all college fee?</FormLabel>
@@ -113,8 +127,8 @@ const TCForm = () => {
 					row
 					name="feePaid"
 				>
-					<FormControlLabel value="Yes" control={<Radio />} label="Yes" sx={{ color: "rgba(0, 0, 0, 0.6)" }} />
-					<FormControlLabel value="No" control={<Radio />} label="No" sx={{ color: "rgba(0, 0, 0, 0.6)" }} />
+					<FormControlLabel value="Yes" control={<Radio required/>} label="Yes" sx={{ color: "rgba(0, 0, 0, 0.6)" }} />
+					<FormControlLabel value="No" control={<Radio required/>} label="No" sx={{ color: "rgba(0, 0, 0, 0.6)" }} />
 				</RadioGroup>
 
 				<FormLabel component="legend">Whether you have applied for this certificate or it is being given Sumoto?</FormLabel>
@@ -122,8 +136,8 @@ const TCForm = () => {
 					row
 					name="appliedSumoto"
 				>
-					<FormControlLabel value="Yes" control={<Radio />} label="Yes" sx={{ color: "rgba(0, 0, 0, 0.6)" }} />
-					<FormControlLabel value="No" control={<Radio />} label="No" sx={{ color: "rgba(0, 0, 0, 0.6)" }} />
+					<FormControlLabel value="Yes" control={<Radio required/>} label="Yes" sx={{ color: "rgba(0, 0, 0, 0.6)" }} />
+					<FormControlLabel value="No" control={<Radio required/>} label="No" sx={{ color: "rgba(0, 0, 0, 0.6)" }} />
 				</RadioGroup>
 			</div>
 			<Button type="submit" variant="contained" color="primary" className="tc-form-btn">
