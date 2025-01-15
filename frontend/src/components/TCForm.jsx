@@ -141,7 +141,7 @@ const TCForm = () => {
 				</RadioGroup>
 			</div>
 			<Button type="submit" variant="contained" color="primary" className="tc-form-btn">
-				Submit
+				Preview
 			</Button>
 		</form>
 	);
