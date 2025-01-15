@@ -1,7 +1,22 @@
-.form-heading {
+.tc-form{
+	display: flex;
+	flex-direction: column;
+	width: 60vw;
+	margin: 0 auto;
+}
+
+.tc-form-heading {
 	font-size: 1.5rem;
 	font-weight: 500;
 	margin-bottom: 1rem;
 	color: #3d3d3d;
 	font-family: sans-serif;
+}
+
+.tc-form-btn {
+	align-self: flex-end;
+}
+
+.tc-form-radios {
+	width: 100%;
 }
