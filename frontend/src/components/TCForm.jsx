@@ -1,8 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
 import '../App.css';
 import { TextField, Button, Radio, RadioGroup, FormControlLabel, FormLabel } from "@mui/material";
 
+const addUserData = (event, setUserData) => {
+	setUserData((prevData) => ({
+		...prevData,
+		[event.target.name] :event.taget.value
+	}
+	))
+};
+
 const TCForm = () => {
+	const [ userData, setUserData ] = useState({
+		certificateNumber: '',
+		admissionNumber: '',
+		fullname: '',
+		fatherName: '',
+		nationality: '',
+		religion: '',
+		caste: '',
+		dob: '',
+		doa: '',
+		dol: '',
+		doiTC: '',
+		yearSem: '',
+		course: '',
+		pin: '',
+		promoted: '',
+		feePaid: '',
+		appliedSumoto: '',
+	});
+
 	return (
 		<form className="tc-form">
 			<h1 className="tc-form-heading">Fill Transfer Certificate Form</h1>
@@ -140,7 +168,7 @@ const TCForm = () => {
 					<FormControlLabel value="No" control={<Radio required/>} label="No" sx={{ color: "rgba(0, 0, 0, 0.6)" }} />
 				</RadioGroup>
 			</div>
-			<Button type="submit" variant="contained" color="primary" className="tc-form-btn">
+			<Button type="button" variant="contained" color="primary" className="tc-form-btn">
 				Preview
 			</Button>
 		</form>
