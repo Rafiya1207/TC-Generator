@@ -92,7 +92,7 @@ const Preview = ({ userData }) => {
 			<div className='align-right'>
 				<MaterialButton path='/' label='back'/>
 				<MaterialButton path='' label='cancel'/>
-				<MaterialButton path='' label='confirm'/>
+				<MaterialButton path='/credentials' label='confirm'/>
 			</div>
 		</>
 	)
