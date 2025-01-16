@@ -18,7 +18,9 @@ const useUserData = () => {
     pin: '',
 		isPromoted: '',
 		isPaidFee: '',
-		isApplied: ''
+		isApplied: '',
+		email: '',
+		password: ''
   });
 
   const addUserData = useCallback((event) => {
