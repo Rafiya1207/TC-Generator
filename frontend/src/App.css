@@ -1,3 +1,7 @@
+body {
+	font-family: Arial, sans-serif;
+}
+
 .tc-form{
 	display: flex;
 	flex-direction: column;
@@ -10,7 +14,6 @@
 	font-weight: 500;
 	margin-bottom: 1rem;
 	color: #3d3d3d;
-	font-family: sans-serif;
 }
 
 .tc-form-btn {
@@ -19,4 +22,31 @@
 
 .tc-form-radios {
 	width: 100%;
+}
+
+.preview-template-headings {
+	text-align: center;
+}
+
+.preview-field {
+	display: grid;
+	grid-template-columns: 60% 40%;
+	align-items: center;
+	column-gap: 1rem;
+}
+
+.preview-document {
+	background-color: #f9f9f9;
+	padding: 2rem;
+	margin: 2rem 5rem;
+	border-radius: 10px;
+}
+
+.principal-sign {
+	text-align: right;
+	margin: 2rem 5rem;
+}
+
+.bottom-field {
+	margin-top: 2rem;
 }

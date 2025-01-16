@@ -1,6 +1,6 @@
-const PreviewField = ({ fieldNumber ,heading, value }) => {
+const PreviewField = ({ fieldNumber, heading, value }) => {
 	return (
-		<div>
+		<div className="preview-field">
 			<h3>{fieldNumber}. {heading} : </h3>
 			<p>{value}</p>
 		</div>
@@ -8,15 +8,15 @@ const PreviewField = ({ fieldNumber ,heading, value }) => {
 }
 
 const Preview = ({ userData }) => {
-	console.log(userData);
-	
-	return(
-		<div>
-			<h1>GOVERNMENT POLYTECHNIC - KALYANDURG-515 761</h1>
+	return (
+		<div className="preview-document">
+			<h1 className="preview-template-headings">GOVERNMENT POLYTECHNIC - KALYANDURG-515 761</h1>
 			<h4>ORIGINAL</h4>
-			<h2>TRANSFER CERTIFICATE</h2>
-			<span><bold>No. </bold>{userData.certificateNumber}</span>
-			<span><bold>Admn. </bold>{userData.admissionNumber}</span>
+			<h2 className="preview-template-headings">TRANSFER CERTIFICATE</h2>
+			<div className="preview-field">
+				<span><strong>No. </strong>{userData.certificateNumber}</span>
+				<span><strong>Admn. </strong>{userData.admissionNumber}</span>
+			</div>
 			<PreviewField
 				fieldNumber='1'
 				heading="Name of the student (Full)"
@@ -82,9 +82,9 @@ const Preview = ({ userData }) => {
 				heading="Date of issuing the Transfer Certificate"
 				value={userData.doiTC}
 			/>
-			<div><bold>Date : </bold></div>
-			<div><bold>Office Seal : </bold></div>
-			<h3>PRINCIPAL</h3>
+			<div className="bottom-field"><strong>Date : </strong></div>
+			<div className="bottom-field"><strong>Office Seal : </strong></div>
+			<h3 className="principal-sign">PRINCIPAL</h3>
 		</div>
 	)
 };
