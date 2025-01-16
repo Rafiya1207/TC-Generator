@@ -4,10 +4,11 @@ import '../App.css';
 import MaterialRadioField from "./MaterialRadioField";
 import MaterialTextField from "./MaterialTextField";
 import MaterialButton from "./MaterialButton";
+import linkToPath from "../functions/linkToPath.js";
 
-const TCForm = ({userData, addUserData}) => {
+const TCForm = ({ userData, addUserData, navigate }) => {
 	return (
-		<form className="tc-form">
+		<form className="tc-form" onSubmit={(event) => linkToPath(event, '/preview', navigate)}>
 			<h1 className="tc-form-heading">Fill Transfer Certificate Form</h1>
 			<MaterialTextField
 				label="Certificate Number"
@@ -121,7 +122,7 @@ const TCForm = ({userData, addUserData}) => {
 					addUserData={addUserData}
 				/>
 			</div>
-			<MaterialButton path='/preview' label='preview' className='align-right' />
+			<MaterialButton label='preview' className='align-right' type='submit' />
 		</form>
 	);
 };

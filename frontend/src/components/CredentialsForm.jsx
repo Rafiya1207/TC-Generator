@@ -4,9 +4,9 @@ import '../App.css';
 import MaterialTextField from "./MaterialTextField";
 import MaterialButton from "./MaterialButton";
 
-const CredentialsForm = ({userData, addUserData}) => {
+const CredentialsForm = ({userData, addUserData, navigate}) => {
 	return (
-		<form className="tc-form">
+		<form className="tc-form" onSubmit={(event) => linkToPath(event, '/credentials', navigate)}>
 			<h1 className="tc-form-heading">Add Credentials</h1>
 			<MaterialTextField
 				label="Email"
@@ -22,7 +22,7 @@ const CredentialsForm = ({userData, addUserData}) => {
 				addUserData={addUserData}
 				type='password'
 			/>
-			<MaterialButton path='' label='submit' className='align-right' />
+			<MaterialButton type='submit' label='submit' className='align-right'/>
 		</form>
 	);
 };
