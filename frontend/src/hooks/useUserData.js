@@ -16,6 +16,9 @@ const useUserData = () => {
     yearSem: '',
     course: '',
     pin: '',
+		isPromoted: '',
+		isPaidFee: '',
+		isApplied: ''
   });
 
   const addUserData = useCallback((event) => {
