@@ -16,10 +16,6 @@ body {
 	color: #3d3d3d;
 }
 
-.tc-form-btn {
-	align-self: flex-end;
-}
-
 .tc-form-radios {
 	width: 100%;
 }
@@ -49,4 +45,10 @@ body {
 
 .bottom-field {
 	margin-top: 2rem;
+}
+
+.align-right {
+  display: flex;
+  justify-content: flex-end;
+	gap: 1rem;
 }

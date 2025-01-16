@@ -1,42 +1,11 @@
 import React from "react";
 import '../App.css';
-import { TextField, Button, Radio, RadioGroup, FormControlLabel, FormLabel } from "@mui/material";
-import { Link } from "react-router-dom";
 
-const MaterialTextField = ({ label, name, value, addUserData, inputLabelProps, type }) => {
-	return (
-		<TextField
-			label={label}
-			name={name}
-			value={value}
-			margin="normal"
-			sx={{ width: "600px" }}
-			required
-			onChange={addUserData}
-			InputLabelProps={inputLabelProps}
-			type={type}
-		/>
-	);
-};
-
-const MaterialRadioField = ({ label, name, value, addUserData }) => {
-	return (
-		<>
-			<FormLabel component="legend">{label}</FormLabel>
-			<RadioGroup
-				row
-				name={name}
-				value={value}
-			>
-				<FormControlLabel value="Yes" control={<Radio required onChange={addUserData} />} label="Yes" sx={{ color: "rgba(0, 0, 0, 0.6)" }} />
-				<FormControlLabel value="No" control={<Radio required onChange={addUserData} />} label="No" sx={{ color: "rgba(0, 0, 0, 0.6)" }} />
-			</RadioGroup>
-		</>
-	);
-};
+import MaterialRadioField from "./MaterialRadioField";
+import MaterialTextField from "./MaterialTextField";
+import MaterialButton from "./MaterialButton";
 
 const TCForm = ({userData, addUserData}) => {
-
 	return (
 		<form className="tc-form">
 			<h1 className="tc-form-heading">Fill Transfer Certificate Form</h1>
@@ -152,11 +121,7 @@ const TCForm = ({userData, addUserData}) => {
 					addUserData={addUserData}
 				/>
 			</div>
-			<Link to={'/preview'}>
-				<Button type="button" variant="contained" color="primary" className="tc-form-btn">
-					Preview
-				</Button>
-			</Link>
+			<MaterialButton path='/preview' label='preview' className='align-right' />
 		</form>
 	);
 };
