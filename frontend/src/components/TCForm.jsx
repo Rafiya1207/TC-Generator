@@ -2,6 +2,7 @@ import React from "react";
 import '../App.css';
 import { TextField, Button, Radio, RadioGroup, FormControlLabel, FormLabel } from "@mui/material";
 import useUserData from "../hooks/useUserData";
+import { Link } from "react-router-dom";
 
 const MaterialTextField = ({ label, name, value, addUserData, inputLabelProps, type }) => {
 	return (
@@ -134,28 +135,30 @@ const TCForm = () => {
 				addUserData={addUserData}
 			/>
 			<div className="tc-form-radios">
-				<MaterialRadioField 
+				<MaterialRadioField
 					label="Are you promoted to higher class?"
 					name="isPromoted"
 					value={userData.isPromoted}
 					addUserData={addUserData}
 				/>
-				<MaterialRadioField 
+				<MaterialRadioField
 					label="Have you paid all college fee?"
 					name="isPaidFee"
 					value={userData.isPaidFee}
 					addUserData={addUserData}
 				/>
-				<MaterialRadioField 
+				<MaterialRadioField
 					label="Whether you have applied for this certificate or it is being given Sumoto?"
 					name="isApplied"
 					value={userData.isApplied}
 					addUserData={addUserData}
 				/>
 			</div>
-			<Button type="button" variant="contained" color="primary" className="tc-form-btn">
-				Preview
-			</Button>
+			<Link to={'/preview'}>
+				<Button type="button" variant="contained" color="primary" className="tc-form-btn">
+					Preview
+				</Button>
+			</Link>
 		</form>
 	);
 };
