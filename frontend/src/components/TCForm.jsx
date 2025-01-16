@@ -1,7 +1,6 @@
 import React from "react";
 import '../App.css';
 import { TextField, Button, Radio, RadioGroup, FormControlLabel, FormLabel } from "@mui/material";
-import useUserData from "../hooks/useUserData";
 import { Link } from "react-router-dom";
 
 const MaterialTextField = ({ label, name, value, addUserData, inputLabelProps, type }) => {
@@ -36,8 +35,7 @@ const MaterialRadioField = ({ label, name, value, addUserData }) => {
 	);
 };
 
-const TCForm = () => {
-	const [userData, addUserData] = useUserData();
+const TCForm = ({userData, addUserData}) => {
 
 	return (
 		<form className="tc-form">
