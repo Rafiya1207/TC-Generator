@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import MaterialButton from "./MaterialButton";
 import MaterialTextField from "./MaterialTextField";
 import linkToPath from "../functions/linkToPath.js";
@@ -6,6 +6,11 @@ import { UserDataContext } from "../context/UserDataContext.jsx";
 
 const CredentialsForm = ({ navigate }) => {
   const { userData, addUserData } = useContext(UserDataContext);
+	const { isSubmitted, setIsSubmitted } = useState(false);
+
+	useEffect(() => {
+		
+	})
 
   return (
     <form className="tc-form" onSubmit={(event) => linkToPath(event, '/credentials', navigate)}>
