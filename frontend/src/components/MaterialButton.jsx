@@ -13,7 +13,7 @@ const MaterialButton = ({ path, label, type = 'button', className }) => {
 					<Link to={path}>
 						{button}
 					</Link> :
-					{ button }
+					 button 
 			}
 		</div>
 	);
