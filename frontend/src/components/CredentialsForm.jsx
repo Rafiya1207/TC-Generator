@@ -3,10 +3,13 @@ import MaterialButton from "./MaterialButton";
 import MaterialTextField from "./MaterialTextField";
 import linkToPath from "../functions/linkToPath.js";
 import { UserDataContext } from "../context/UserDataContext.jsx";
+import ConfirmationPopUp from "./ConfirmationPopUp.jsx";
 
 const CredentialsForm = ({ navigate }) => {
 	const { userData, addUserData } = useContext(UserDataContext);
 	const { isSubmitted, setIsSubmitted } = useState(false);
+	const { doesGotResponse, setDoesGotResponse } = useState(false);
+	const { status, setStatus } = useState(false);
 
 	useEffect(() => {
 		const postTC = async () => {
@@ -17,13 +20,17 @@ const CredentialsForm = ({ navigate }) => {
 				},
 				credentials: 'include',
 				body: JSON.stringify(userData)
-			})
+			});
+			setStatus(res.ok);
+			setDoesGotResponse(true);
 		};
 
 		postTC();
 	}, [isSubmitted])
 
 	return (
+		<div>
+
 		<form
 			className="tc-form"
 			onSubmit={(event) => {
@@ -47,6 +54,10 @@ const CredentialsForm = ({ navigate }) => {
 			/>
 			<MaterialButton type='submit' label='Submit' className='align-right' />
 		</form>
+		{
+			doesGotResponse && <ConfirmationPopUp status={status} />
+		}
+		</div>
 	);
 };
 
