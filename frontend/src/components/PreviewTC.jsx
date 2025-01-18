@@ -10,11 +10,11 @@ const PreviewField = ({ fieldNumber, heading, value }) => {
 	);
 }
 
-const PreviewTC = () => {
+const PreviewTC = ({ printRef }) => {
 	const { userData } = useContext(UserDataContext);
 
 	return (
-		<div className="preview-document">
+		<div ref={printRef} className="preview-document">
 			<h1 className="preview-template-headings">GOVERNMENT POLYTECHNIC - KALYANDURG-515 761</h1>
 			<h4>ORIGINAL</h4>
 			<h2 className="preview-template-headings">TRANSFER CERTIFICATE</h2>
