@@ -7,56 +7,68 @@ import ConfirmationPopUp from "./ConfirmationPopUp.jsx";
 
 const CredentialsForm = ({ navigate }) => {
 	const { userData, addUserData } = useContext(UserDataContext);
-	const { isSubmitted, setIsSubmitted } = useState(false);
-	const { doesGotResponse, setDoesGotResponse } = useState(false);
-	const { status, setStatus } = useState(false);
+	const [isSubmitted, setIsSubmitted] = useState(false);
+	const [doesGotResponse, setDoesGotResponse] = useState(false);
+	const [status, setStatus] = useState(false);
 
 	useEffect(() => {
+		if (!isSubmitted) return;
+
 		const postTC = async () => {
-			const res = await fetch('http://localhost:5000/tc', {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json'
-				},
-				credentials: 'include',
-				body: JSON.stringify(userData)
-			});
-			setStatus(res.ok);
-			setDoesGotResponse(true);
+			try {
+				const res = await fetch('http://localhost:5000/tc/', {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					credentials: 'include',
+					body: JSON.stringify(userData)
+				});
+
+				console.log(res);
+				setStatus(res.ok);
+			} catch (error) {
+				console.error("Error posting TC:", error);
+				setStatus(false);
+			} finally {
+				setDoesGotResponse(true);
+			}
 		};
 
 		postTC();
-	}, [isSubmitted])
+	}, [isSubmitted]);
+
 
 	return (
 		<div>
 
-		<form
-			className="tc-form"
-			onSubmit={(event) => {
-				// linkToPath(event, '/credentials', navigate)
-				setIsSubmitted(!isSubmitted)
-			}}>
-			<h1 className="tc-form-heading">Add Credentials</h1>
-			<MaterialTextField
-				label="Email"
-				name="email"
-				value={userData.email}
-				addUserData={addUserData}
-				type='email'
-			/>
-			<MaterialTextField
-				label="Password"
-				name="password"
-				value={userData.password}
-				addUserData={addUserData}
-				type='password'
-			/>
-			<MaterialButton type='submit' label='Submit' className='align-right' />
-		</form>
-		{
-			doesGotResponse && <ConfirmationPopUp status={status} />
-		}
+			<form
+				className="tc-form"
+				onSubmit={(event) => {
+					event.preventDefault();
+					// linkToPath(event, '/credentials', navigate)
+					setIsSubmitted(!isSubmitted)
+				}}>
+				<h1 className="tc-form-heading">Add Credentials</h1>
+				<MaterialTextField
+					label="Email"
+					name="email"
+					value={userData.email}
+					addUserData={addUserData}
+					type='email'
+				/>
+				<MaterialTextField
+					label="Password"
+					name="password"
+					value={userData.password}
+					addUserData={addUserData}
+					type='password'
+				/>
+				<MaterialButton type='submit' label='Submit' className='align-right' />
+			</form>
+			{
+				doesGotResponse && <ConfirmationPopUp status={status} setDoesGotResponse={setDoesGotResponse} />
+			}
 		</div>
 	);
 };
