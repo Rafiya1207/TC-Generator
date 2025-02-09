@@ -7,7 +7,7 @@ const MaterialTextField = ({ label, name, value, addUserData, inputLabelProps, t
 			name={name}
 			value={value}
 			margin="normal"
-			sx={{ width: "600px" }}
+			sx={{ width: "40vw" }}
 			required
 			onChange={addUserData}
 			InputLabelProps={inputLabelProps}
