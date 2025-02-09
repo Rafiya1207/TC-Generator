@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Box, TextField, InputAdornment } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 
-const TopSection = ({ onSearch }) => {
+const SearchSection = ({ onSearch }) => {
   const [search, setSearch] = useState("");
 
   const handleSearch = (event) => {
@@ -48,4 +48,4 @@ const TopSection = ({ onSearch }) => {
   );
 };
 
-export default TopSection;
+export default SearchSection;
