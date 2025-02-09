@@ -31,12 +31,12 @@ const MainSection = () => {
           sx={{
             mt: 3,
             px: 4,
-            backgroundColor: "#ff9800", // High-contrast orange
-            color: "white",
+            backgroundColor: "white", // High-contrast orange
+            color: "primary.main",
             fontSize: "1.1rem",
             transition: "0.3s",
             "&:hover": {
-              backgroundColor: "#e68900",
+              opacity: '0.9',
               transform: "scale(1.05)",
             },
           }}
