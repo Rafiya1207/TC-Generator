@@ -21,6 +21,9 @@ const MainSection = () => {
         }}
       >
         <Typography variant="h3" fontWeight="bold">
+					GOVERNMENT POLYTECHNIC - KALYANDURG - 515 761
+        </Typography>
+        <Typography variant="h3" fontWeight="bold">
           TC Generator App
         </Typography>
         <Typography variant="h6" sx={{ mt: 2, opacity: 0.9, maxWidth: "600px" }}>
