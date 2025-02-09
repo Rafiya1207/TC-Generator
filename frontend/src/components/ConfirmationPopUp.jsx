@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { Button, Dialog, DialogActions, DialogTitle } from '@mui/material';
-import PreviewTC from './PreviewTC';
+import PreviewTC from './Generate TC/PreviewTC.jsx';
 import html2canvas from 'html2canvas';
 import { jsPDF } from 'jspdf';
 

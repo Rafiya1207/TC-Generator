@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
-import MaterialButton from "./MaterialButton";
-import MaterialTextField from "./MaterialTextField";
+import MaterialButton from "./Material Form Elements/MaterialButton.jsx";
+import MaterialTextField from "./Material Form Elements/MaterialTextField.jsx";
 import linkToPath from "../functions/linkToPath.js";
 import { UserDataContext } from "../context/UserDataContext.jsx";
 import ConfirmationPopUp from "./ConfirmationPopUp.jsx";
