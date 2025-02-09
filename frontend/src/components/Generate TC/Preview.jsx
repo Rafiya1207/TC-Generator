@@ -1,4 +1,4 @@
-import PreviewTC from '../PreviewTC.jsx'
+import PreviewTC from './PreviewTC.jsx'
 import MaterialButton from "../Material Form Elements/MaterialButton.jsx";
 
 const Preview = () => {

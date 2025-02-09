@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
-import '../App.css';
+import '../../App.css';
 
 import MaterialRadioField from "../Material Form Elements/MaterialRadioField";
 import MaterialTextField from "../Material Form Elements/MaterialTextField";
 import MaterialButton from "../Material Form Elements/MaterialButton";
-import linkToPath from "../functions/linkToPath.js";
-import { UserDataContext } from "../context/UserDataContext.jsx";
+import linkToPath from "../../functions/linkToPath.js";
+import { UserDataContext } from "../../context/UserDataContext.jsx";
 
 const TCForm = ({ navigate }) => {
   const { userData, addUserData } = useContext(UserDataContext);

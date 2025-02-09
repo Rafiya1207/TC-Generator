@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { UserDataContext } from "../context/UserDataContext.jsx";
+import { UserDataContext } from "../../context/UserDataContext.jsx";
 
 const PreviewField = ({ fieldNumber, heading, value }) => {
 	return (
