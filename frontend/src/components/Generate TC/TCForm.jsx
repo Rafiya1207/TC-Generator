@@ -124,7 +124,10 @@ const TCForm = ({ navigate }) => {
           addUserData={addUserData}
         />
       </div>
-      <MaterialButton label='reset' className='align-right' type='reset' onClick={removeUserData} />
+			<div className='align-right'>
+				<MaterialButton label='reset' type='reset' onClick={removeUserData} />
+				<MaterialButton label='submit' type='submit' />
+			</div>
     </form>
   );
 };
