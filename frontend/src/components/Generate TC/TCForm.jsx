@@ -125,6 +125,7 @@ const TCForm = ({ navigate }) => {
         />
       </div>
 			<div className='align-right'>
+				<MaterialButton label='back' path='/'/>
 				<MaterialButton label='reset' type='reset' onClick={removeUserData} />
 				<MaterialButton label='submit' type='submit' />
 			</div>
