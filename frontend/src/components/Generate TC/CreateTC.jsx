@@ -1,9 +1,9 @@
 import PreviewTC from './PreviewTC';
 import TCForm from './TCForm.jsx';
-const CreateTC = () => {
+const CreateTC = ({ navigate }) => {
 	return (
 		<div style={{display: 'flex'}}>
-			<TCForm/>
+			<TCForm navigate={ navigate }/>
 			<PreviewTC/>
 		</div>
 	);

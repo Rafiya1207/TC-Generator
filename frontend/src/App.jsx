@@ -12,10 +12,10 @@ function App() {
 	return (
 		<UserDataProvider>
 			<Routes>
-				<Route path='/' element={<TCForm navigate={navigate} />}  />
-				<Route path='/create' element={<CreateTC />}  />
+				<Route path='/' element={<TCForm navigate={ navigate } />}  />
+				<Route path='/create' element={<CreateTC navigate={ navigate }/>}  />
 				<Route path='/preview' element={<Preview />} />
-				<Route path='/credentials' element={<CredentialsForm navigate={navigate} />} />
+				<Route path='/credentials' element={<CredentialsForm navigate={ navigate } />} />
 			</Routes>
 		</UserDataProvider>
 	)
