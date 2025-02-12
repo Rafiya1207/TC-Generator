@@ -7,6 +7,7 @@ import CreateTC from './components/Generate TC/CreateTC.jsx';
 import TCDownloadPage from './components/TCDownloadPage.jsx';
 import ViewTCsPage from './components/View TCs/ViewTCsPage.jsx';
 import ViewTC from './components/View TCs/viewTC.jsx';
+import WelcomePage from './components/Authentication/WelcomePage.jsx';
 
 function App() {
 	const navigate = useNavigate();
@@ -14,7 +15,7 @@ function App() {
 	return (
 		<UserDataProvider>
 			<Routes>
-				<Route path='/' element={<TCForm navigate={navigate} />} />
+				<Route path='/' element={<WelcomePage navigate={navigate} />} />
 				<Route path='/create' element={<CreateTC navigate={navigate} />} />
 				<Route path='/view/:id' element={<ViewTC/>} />
 				<Route path='/credentials' element={<CredentialsForm navigate={navigate} />} />
