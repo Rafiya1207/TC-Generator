@@ -3,6 +3,15 @@ import express from 'express';
 
 const router = express.Router();
 
+router.get('/', async (req, res) => {
+	try {
+		const logs = await TC.find({});
+		res.status(200).json({ success: true, data: logs});
+	} catch (error) {
+		res.status(500).json({ success: false, message: "server error"});
+	}
+});
+
 router.post('/', async (req, res) => {
 	const tc = req.body;
 	console.log(tc);
