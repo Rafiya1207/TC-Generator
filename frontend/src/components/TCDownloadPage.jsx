@@ -3,9 +3,12 @@ import { Button, Typography, Box, Container } from '@mui/material';
 import PreviewTC from './Generate TC/PreviewTC.jsx';
 import html2canvas from 'html2canvas';
 import { jsPDF } from 'jspdf';
+import { useLocation } from 'react-router-dom';
 
-const TCDownloadPage = ({ status, setDoesGotResponse }) => {
+const TCDownloadPage = ({ setDoesGotResponse }) => {
 	const printRef = useRef(null);
+	const location = useLocation();
+	const status = location.state;
 
 	const downloadPDF = async () => {
 		const element = printRef.current;
@@ -41,9 +44,9 @@ const TCDownloadPage = ({ status, setDoesGotResponse }) => {
 		pdf.save('Transfer Certificate.pdf');
 	};
 
-	const handleClose = () => {
-		setDoesGotResponse(false);
-	};
+	// const handleClose = () => {
+	// 	setDoesGotResponse(false);
+	// };
 
 	let message = 'Your TC is Successfully Created';
 	let buttonLabel = 'Download TC';
@@ -52,7 +55,7 @@ const TCDownloadPage = ({ status, setDoesGotResponse }) => {
 	if (!status) {
 		message = 'OPPS! Server Issue, Unable to send Data';
 		buttonLabel = 'Go Back';
-		buttonListener = handleClose;
+		// buttonListener = handleClose;
 	}
 
 	return (

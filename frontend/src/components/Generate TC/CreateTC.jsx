@@ -2,6 +2,7 @@ import PreviewTC from './PreviewTC';
 import TCForm from './TCForm.jsx';
 import { useState } from 'react';
 import TCDataConfirmationPopUp from './TCDataConfirmationPopUp.jsx';
+import postTC from '../../functions/submitTCData.js';
 const CreateTC = ({ navigate }) => {
 	const [ isTCSubmitted, setIsTCSubmitted ] = useState(false);
 	const handleOpen = () => {
@@ -12,9 +13,10 @@ const CreateTC = ({ navigate }) => {
     setIsTCSubmitted(false);
   };
 
-  const handleConfirm = () => {
+  const handleConfirm = ( status ) => {
     setIsTCSubmitted(false);
-		navigate('/downloadTC');
+		// await postTC();
+		navigate('/downloadTC', { state: status });
   };
 
 	return (

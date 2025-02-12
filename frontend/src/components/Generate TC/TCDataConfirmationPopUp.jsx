@@ -1,7 +1,40 @@
 import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from "@mui/material";
+import React, { useContext, useEffect, useState } from "react";
+import { UserDataContext } from "../../context/UserDataContext";
 
 function TCDataConfirmationPopUp({ isTCSubmitted, close, confirm }) {
+	const { userData, addUserData } = useContext(UserDataContext);
+	const [isSubmitted, setIsSubmitted] = useState(false);
+	const [status, setStatus] = useState(false);
+	
+	
+	useEffect(() => {
+		if (!isSubmitted) return;
 
+		const postTC = async () => {
+			try {
+				const res = await fetch('http://localhost:5000/tc/', {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					credentials: 'include',
+					body: JSON.stringify(userData)
+				});
+
+				console.log(res);
+				// setStatus(res.ok);
+				confirm(res.ok)
+			} catch (error) {
+				console.error("Error posting TC:", error);
+				// setStatus(false);
+			// } finally {
+				// setDoesGotResponse(true);
+			}
+		};
+
+		postTC();
+	}, [isSubmitted]);
   return (
     <div>
       <Button variant="contained" color="primary" onClick={close}>
@@ -21,7 +54,7 @@ function TCDataConfirmationPopUp({ isTCSubmitted, close, confirm }) {
           <Button onClick={close} color="secondary">
             Cancel
           </Button>
-          <Button onClick={confirm} color="primary" variant="contained">
+          <Button onClick={() => { setIsSubmitted(true)}} color="primary" variant="contained">
             Confirm & Submit
           </Button>
         </DialogActions>
