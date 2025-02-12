@@ -1,12 +1,13 @@
-import React, { useContext } from "react";
+import React, { useState, useContext } from "react";
 import '../../App.css';
 import MaterialRadioField from "../Material Form Elements/MaterialRadioField";
 import MaterialTextField from "../Material Form Elements/MaterialTextField";
 import MaterialButton from "../Material Form Elements/MaterialButton";
 import linkToPath from "../../functions/linkToPath.js";
 import { UserDataContext } from "../../context/UserDataContext.jsx";
+import TCDataConfirmationPopUP from "./TCDataConfirmationPopUp.jsx";
 
-const TCForm = ({ navigate }) => {
+const TCForm = ({ navigate, open }) => {
   const { userData, addUserData, removeUserData } = useContext(UserDataContext);
 
   return (
@@ -127,7 +128,7 @@ const TCForm = ({ navigate }) => {
 			<div className='align-right'>
 				<MaterialButton label='back' path='/'/>
 				<MaterialButton label='reset' type='reset' onClick={removeUserData} />
-				<MaterialButton label='submit' type='submit' />
+				<MaterialButton label='submit' type='button' onClick={ open }/>
 			</div>
     </form>
   );
