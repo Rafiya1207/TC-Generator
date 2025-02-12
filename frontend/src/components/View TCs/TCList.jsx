@@ -19,24 +19,20 @@ const TCList = ({ data, navigate }) => {
         <Table>
           <TableHead sx={{ backgroundColor: "#1976d2" }}>
             <TableRow>
+              <TableCell sx={headerStyle}>PIN</TableCell>
               <TableCell sx={headerStyle}>Student Name</TableCell>
               <TableCell sx={headerStyle}>Date of Issue</TableCell>
               <TableCell sx={headerStyle}>Course</TableCell>
-              <TableCell sx={headerStyle} align="center">Download</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {data.length > 0 ? (
               data.map((tc, index) => (
                 <TableRow key={index} hover onClick={() => { navigate(`/view/${tc.fullname}`, {state:tc._id})}}>
+                  <TableCell>{tc.pin}</TableCell>
                   <TableCell>{tc.fullname}</TableCell>
                   <TableCell>{tc.doiTC}</TableCell>
                   <TableCell>{tc.course}</TableCell>
-                  <TableCell align="center">
-                    <IconButton color="primary" onClick={() => alert("Downloading...")}>
-                      <DownloadIcon />
-                    </IconButton>
-                  </TableCell>
                 </TableRow>
               ))
             ) : (
