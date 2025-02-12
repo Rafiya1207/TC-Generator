@@ -21,8 +21,6 @@ export const UserDataProvider = ({ children }) => {
 		isPromoted: '',
 		isPaidFee: '',
 		isApplied: '',
-		email: '',
-		password: ''
 	});
 
 	const addUserData = (event) => {
@@ -52,8 +50,6 @@ export const UserDataProvider = ({ children }) => {
 			isPromoted: '',
 			isPaidFee: '',
 			isApplied: '',
-			email: '',
-			password: ''
 		}));
 	};
 
