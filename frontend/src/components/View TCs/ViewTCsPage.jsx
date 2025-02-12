@@ -2,7 +2,7 @@ import TCList from "./TCList.jsx";
 import SearchBar from "./SearchBar.jsx";
 import { useEffect, useState } from "react";
 
-const ViewTCsPage = () => {
+const ViewTCsPage = ({ navigate }) => {
 	const [data, setData] = useState([]);
 	useEffect(() => {
 		const getTCs = async () => {
@@ -24,7 +24,7 @@ const ViewTCsPage = () => {
 	return (
 		<>
 			<SearchBar/>
-			<TCList data = {data} />
+			<TCList data = {data} navigate={navigate} />
 		</>
 	);
 };

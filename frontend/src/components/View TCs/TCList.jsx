@@ -11,9 +11,8 @@ import {
 } from "@mui/material";
 import DownloadIcon from "@mui/icons-material/Download";
 
-const TCList = ({ data }) => {
-	console.log(data);
-	console.log(data.length);
+const TCList = ({ data, navigate }) => {
+
   return (
     <Box sx={{ width: "90%", margin: "auto", mt: 4 }}>
       <TableContainer component={Paper} sx={{ borderRadius: "12px", boxShadow: 3 }}>
@@ -29,7 +28,7 @@ const TCList = ({ data }) => {
           <TableBody>
             {data.length > 0 ? (
               data.map((tc, index) => (
-                <TableRow key={index} hover>
+                <TableRow key={index} hover onClick={() => { navigate(`/view/${tc.fullname}`, {state:tc._id})}}>
                   <TableCell>{tc.fullname}</TableCell>
                   <TableCell>{tc.doiTC}</TableCell>
                   <TableCell>{tc.course}</TableCell>
