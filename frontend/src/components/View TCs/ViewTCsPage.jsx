@@ -1,9 +1,9 @@
 import TCList from "./TCList.jsx";
 import SearchBar from "./SearchBar.jsx";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const ViewTCsPage = () => {
-	let data = [];
+	const [data, setData] = useState([]);
 	useEffect(() => {
 		const getTCs = async () => {
 			const res = await fetch('http://localhost:5000/tc/',{
@@ -13,15 +13,18 @@ const ViewTCsPage = () => {
 				},
 				credentials: 'include',
 			});
-			data = await res.json();
-			console.log(data);
+			const result = await res.json();
+			setData(result.data);
+			console.log(result);
 		};
 		getTCs();
 	}, []);
+	console.log(data);
+	
 	return (
 		<>
 			<SearchBar/>
-			<TCList data = {data.data} />
+			<TCList data = {data} />
 		</>
 	);
 };
