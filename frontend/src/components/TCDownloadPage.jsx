@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { Button, Typography, Box, Container } from '@mui/material';
 import PreviewTC from './Generate TC/PreviewTC.jsx';
 import html2canvas from 'html2canvas';
@@ -9,12 +9,23 @@ const TCDownloadPage = ({ setDoesGotResponse }) => {
 	const printRef = useRef(null);
 	const location = useLocation();
 	const status = location.state;
+	const [contentHeight, setContentHeight] = useState('auto'); // Adjust content height dynamically
+
+	useEffect(() => {
+		if (printRef.current) {
+			setContentHeight(printRef.current.scrollHeight); // Get full height of content
+		}
+	}, [status]);
 
 	const downloadPDF = async () => {
 		const element = printRef.current;
 		if (!element) return;
 
-		const canvas = await html2canvas(element);
+		const canvas = await html2canvas(element, {
+			scale: 3, // Higher quality capture
+			useCORS: true, // Handle images and styles properly
+		});
+
 		const dataImage = canvas.toDataURL('image/png');
 
 		const pdf = new jsPDF({
@@ -23,30 +34,22 @@ const TCDownloadPage = ({ setDoesGotResponse }) => {
 			format: 'a4'
 		});
 
-		// Get A4 page dimensions in pixels
 		const pdfWidth = pdf.internal.pageSize.getWidth();
 		const pdfHeight = pdf.internal.pageSize.getHeight();
+		const imgWidth = canvas.width;
+		const imgHeight = canvas.height;
 
-		// Calculate scaled image dimensions
-		const imgProperties = pdf.getImageProperties(dataImage);
-		const imgWidth = imgProperties.width;
-		const imgHeight = imgProperties.height;
-
-		let scaledWidth = pdfWidth;
-		let scaledHeight = (imgHeight * pdfWidth) / imgWidth;
+		// Scale content properly to fit into A4 dimensions
+		const scaleFactor = pdfWidth / imgWidth;
+		const scaledHeight = imgHeight * scaleFactor;
 
 		if (scaledHeight > pdfHeight) {
-			scaledHeight = pdfHeight;
-			scaledWidth = (imgWidth * pdfHeight) / imgHeight;
+			pdf.internal.pageSize.height = scaledHeight;
 		}
 
-		pdf.addImage(dataImage, 'PNG', (pdfWidth - scaledWidth) / 2, 0, scaledWidth, scaledHeight);
+		pdf.addImage(dataImage, 'PNG', 0, 0, pdfWidth, scaledHeight);
 		pdf.save('Transfer Certificate.pdf');
 	};
-
-	// const handleClose = () => {
-	// 	setDoesGotResponse(false);
-	// };
 
 	let message = 'Your TC is Successfully Created';
 	let buttonLabel = 'Download TC';
@@ -55,7 +58,6 @@ const TCDownloadPage = ({ setDoesGotResponse }) => {
 	if (!status) {
 		message = 'OPPS! Server Issue, Unable to send Data';
 		buttonLabel = 'Go Back';
-		// buttonListener = handleClose;
 	}
 
 	return (
@@ -66,7 +68,7 @@ const TCDownloadPage = ({ setDoesGotResponse }) => {
 					flexDirection: 'column',
 					alignItems: 'center',
 					justifyContent: 'center',
-					height: '100vh',
+					minHeight: '100vh',
 					textAlign: 'center',
 				}}
 			>
@@ -74,7 +76,25 @@ const TCDownloadPage = ({ setDoesGotResponse }) => {
 					{message}
 				</Typography>
 
-				{status && <PreviewTC printRef={printRef} />}
+				{/* Fix: Ensure the preview is fully visible without cutting */}
+				{status && (
+					<Box
+						ref={printRef}
+						sx={{
+							width: '100%',
+							maxWidth: '794px', // Matches A4 width
+							minHeight: 'auto',
+							height: contentHeight, // Set dynamically
+							overflow: 'visible', // Ensures nothing is hidden
+							padding: 2,
+							backgroundColor: '#fff',
+							display: 'flex',
+							flexDirection: 'column',
+						}}
+					>
+						<PreviewTC />
+					</Box>
+				)}
 
 				<Box sx={{ mt: 4 }}>
 					<Button variant="contained" color="primary" onClick={buttonListener}>
