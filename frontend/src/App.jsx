@@ -6,6 +6,7 @@ import { UserDataProvider } from './context/UserDataContext.jsx';
 import CredentialsForm from './components/CredentialsForm';
 import CreateTC from './components/Generate TC/CreateTC.jsx';
 import TCDownloadPage from './components/TCDownloadPage.jsx';
+import ViewTCsPage from './components/View TCs/ViewTCsPage.jsx';
 
 function App() {
 	const navigate = useNavigate();
@@ -17,6 +18,7 @@ function App() {
 				<Route path='/create' element={<CreateTC navigate={ navigate }/>}  />
 				<Route path='/preview' element={<Preview />} />
 				<Route path='/credentials' element={<CredentialsForm navigate={ navigate } />} />
+				<Route path='/view' element={<ViewTCsPage/>} />
 				<Route path='/downloadTC' element={<TCDownloadPage/>} />
 			</Routes>
 		</UserDataProvider>
