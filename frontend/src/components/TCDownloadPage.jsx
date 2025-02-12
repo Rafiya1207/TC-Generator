@@ -71,7 +71,6 @@ const TCDownloadPage = ({ setDoesGotResponse }) => {
 					alignItems: 'center',
 					justifyContent: 'center',
 					minHeight: '100vh',
-					textAlign: 'center',
 				}}
 			>
 				<Typography variant="h4" gutterBottom>

@@ -27,7 +27,7 @@ router.get('/:id', async (req, res) => {
 
 router.post('/', async (req, res) => {
 	const tc = req.body;
-	console.tc(tc);
+	console.log(tc);
 
 	if (!tc.certificateNumber && !tc.admissionNumber && !tc.fullname && !tc.fatherName && !tc.nationality && !tc.religion && !tc.caste && !tc.dob && !tc.doa && !tc.dol && !tc.doiTC && !tc.yearSem && !tc.course && !tc.pin && !tc.isPromoted && !tc.isPaidFee && !tc.isApplied) {
 		return res.status(400).json({ success: false, message: "provide fields" });
