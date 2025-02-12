@@ -1,15 +1,17 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState, useContext } from 'react';
 import { Button, Typography, Box, Container } from '@mui/material';
 import PreviewTC from './Generate TC/PreviewTC.jsx';
 import html2canvas from 'html2canvas';
 import { jsPDF } from 'jspdf';
 import { useLocation } from 'react-router-dom';
+import { UserDataContext } from '../context/UserDataContext.jsx';
 
 const TCDownloadPage = ({ setDoesGotResponse }) => {
 	const printRef = useRef(null);
 	const location = useLocation();
 	const status = location.state;
 	const [contentHeight, setContentHeight] = useState('auto'); // Adjust content height dynamically
+	const { userData } = useContext(UserDataContext);
 
 	useEffect(() => {
 		if (printRef.current) {
@@ -92,7 +94,7 @@ const TCDownloadPage = ({ setDoesGotResponse }) => {
 							flexDirection: 'column',
 						}}
 					>
-						<PreviewTC />
+						<PreviewTC userData={userData}/>
 					</Box>
 				)}
 
