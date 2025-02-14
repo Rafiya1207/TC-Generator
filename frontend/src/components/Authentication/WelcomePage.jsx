@@ -26,7 +26,7 @@ const WelcomePage = () => {
           left: 0,
           width: "100%",
           height: "100%",
-          backgroundColor: "rgba(25, 118, 210, 0.7)", // Blue overlay with transparency
+          backgroundColor: "rgba(25, 118, 210)",
         }}
       ></Box>
       <Box sx={{ position: "relative", zIndex: 2 }}>
