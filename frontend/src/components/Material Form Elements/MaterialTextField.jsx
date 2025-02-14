@@ -1,6 +1,6 @@
 import { TextField } from "@mui/material";
 
-const MaterialTextField = ({ label, name, value, addUserData, inputLabelProps, type }) => {
+const MaterialTextField = ({ label, name, value, listener, inputLabelProps, type }) => {
 	return (
 		<TextField
 			label={label}
@@ -9,7 +9,7 @@ const MaterialTextField = ({ label, name, value, addUserData, inputLabelProps, t
 			margin="normal"
 			sx={{ width: "40vw" }}
 			required
-			onChange={addUserData}
+			onChange={listener}
 			InputLabelProps={inputLabelProps}
 			type={type}
 		/>

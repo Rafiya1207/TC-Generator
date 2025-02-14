@@ -17,43 +17,43 @@ const TCForm = ({ navigate, open }) => {
         label="Certificate Number"
         name="certificateNumber"
         value={userData.certificateNumber}
-        addUserData={addUserData}
+        listener={addUserData}
       />
       <MaterialTextField
         label="Admission Number"
         name="admissionNumber"
         value={userData.admissionNumber}
-        addUserData={addUserData}
+        listener={addUserData}
       />
       <MaterialTextField
         label="Fullname"
         name="fullname"
         value={userData.fullname}
-        addUserData={addUserData}
+        listener={addUserData}
       />
       <MaterialTextField
         label="Father's Full Name"
         name="fatherName"
         value={userData.fatherName}
-        addUserData={addUserData}
+        listener={addUserData}
       />
       <MaterialTextField
         label="Nationality"
         name="nationality"
         value={userData.nationality}
-        addUserData={addUserData}
+        listener={addUserData}
       />
       <MaterialTextField
         label="Religion"
         name="religion"
         value={userData.religion}
-        addUserData={addUserData}
+        listener={addUserData}
       />
       <MaterialTextField
         label="Caste"
         name="caste"
         value={userData.caste}
-        addUserData={addUserData}
+        listener={addUserData}
       />
       <MaterialTextField
         label="Date of Birth"
@@ -61,7 +61,7 @@ const TCForm = ({ navigate, open }) => {
         value={userData.dob}
         type="date"
         inputLabelProps={{ shrink: true }}
-        addUserData={addUserData}
+        listener={addUserData}
       />
       <MaterialTextField
         label="Date of Admission"
@@ -69,7 +69,7 @@ const TCForm = ({ navigate, open }) => {
         value={userData.doa}
         type="date"
         inputLabelProps={{ shrink: true }}
-        addUserData={addUserData}
+        listener={addUserData}
       />
       <MaterialTextField
         label="Date of Leaving"
@@ -77,7 +77,7 @@ const TCForm = ({ navigate, open }) => {
         value={userData.dol}
         type="date"
         inputLabelProps={{ shrink: true }}
-        addUserData={addUserData}
+        listener={addUserData}
       />
       <MaterialTextField
         label="Date of Issuing Transfer Certificate"
@@ -85,44 +85,44 @@ const TCForm = ({ navigate, open }) => {
         value={userData.doiTC}
         type="date"
         inputLabelProps={{ shrink: true }}
-        addUserData={addUserData}
+        listener={addUserData}
       />
       <MaterialTextField
         label="Year/Semester"
         name="yearSem"
         value={userData.yearSem}
-        addUserData={addUserData}
+        listener={addUserData}
       />
       <MaterialTextField
         label="Course"
         name="course"
         value={userData.course}
-        addUserData={addUserData}
+        listener={addUserData}
       />
       <MaterialTextField
         label="PIN"
         name="pin"
         value={userData.pin}
-        addUserData={addUserData}
+        listener={addUserData}
       />
       <div className="tc-form-radios">
         <MaterialRadioField
           label="Are you promoted to higher class?"
           name="isPromoted"
           value={userData.isPromoted}
-          addUserData={addUserData}
+          listener={addUserData}
         />
         <MaterialRadioField
           label="Have you paid all college fee?"
           name="isPaidFee"
           value={userData.isPaidFee}
-          addUserData={addUserData}
+          listener={addUserData}
         />
         <MaterialRadioField
           label="Whether you have applied for this certificate or it is being given Sumoto?"
           name="isApplied"
           value={userData.isApplied}
-          addUserData={addUserData}
+          listener={addUserData}
         />
       </div>
 			<div className='align-right'>
