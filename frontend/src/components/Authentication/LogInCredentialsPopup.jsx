@@ -1,9 +1,10 @@
 import { Dialog, DialogTitle, DialogContent, DialogActions, Button } from "@mui/material";
 import MaterialTextField from '../Material Form Elements/MaterialTextField.jsx';
 
-const CredentialsPopup = () => {
+const LogInCredentialsPopup = ({isClickedLogin, close}) => {
+	
 	return (
-		<Dialog open={isTCSubmitted} onClose={close}>
+		<Dialog open={isClickedLogin} onClose={close}>
 			<DialogTitle>Log In</DialogTitle>
 			<DialogContent>
 			<MaterialTextField
@@ -16,12 +17,12 @@ const CredentialsPopup = () => {
 				<Button onClick={close} color="secondary">
 					Cancel
 				</Button>
-				<Button onClick={() => { setIsSubmitted(true) }} color="primary" variant="contained">
-					Confirm & Submit
+				<Button onClick={() => checkPassword(userPassword)} color="primary" variant="contained">
+					Submit
 				</Button>
 			</DialogActions>
 		</Dialog>
 	);
 };
 
-export default CredentialsPopup;
+export default LogInCredentialsPopup;
