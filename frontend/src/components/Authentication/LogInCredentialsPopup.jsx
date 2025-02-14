@@ -1,11 +1,16 @@
 import { Dialog, DialogTitle, DialogContent, DialogActions, Button } from "@mui/material";
 import MaterialTextField from '../Material Form Elements/MaterialTextField.jsx';
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import isPassword from "../../functions/checkPassword.js";
 
 const LogInCredentialsPopup = ({isClickedLogin, close}) => {
 	const [userPassword, setUserPassword] = useState('');
 	const changePassword = (e) => setUserPassword(e.target.value);
-
+	const navigate = useNavigate();
+	const verifyPassword = () => {
+		if (isPassword(userPassword)) navigate('/dashboard');
+	}
 	return (
 		<Dialog open={isClickedLogin} onClose={close}>
 			<DialogTitle>Log In</DialogTitle>
@@ -22,7 +27,7 @@ const LogInCredentialsPopup = ({isClickedLogin, close}) => {
 				<Button onClick={close} color="secondary">
 					Cancel
 				</Button>
-				<Button onClick={() => checkPassword(userPassword)} color="primary" variant="contained">
+				<Button onClick={verifyPassword} color="primary" variant="contained">
 					Submit
 				</Button>
 			</DialogActions>
