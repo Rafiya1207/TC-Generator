@@ -18,9 +18,9 @@ function App() {
 				<Route path='/' element={<WelcomePage navigate={navigate} />} />
 				<Route path='/dashboard' element={<Home />} />
 				<Route path='/create' element={<CreateTC navigate={navigate} />} />
-				<Route path='/view/:id' element={<ViewTC/>} />
+				<Route path='/saved/:id' element={<ViewTC/>} />
 				<Route path='/credentials' element={<CredentialsForm navigate={navigate} />} />
-				<Route path='/view' element={<ViewTCsPage navigate={navigate} />} />
+				<Route path='/saved' element={<ViewTCsPage navigate={navigate} />} />
 				<Route path='/downloadTC' element={<TCDownloadPage />} />
 			</Routes>
 		</UserDataProvider>

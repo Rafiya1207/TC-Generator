@@ -9,7 +9,6 @@ import {
   Paper,
   IconButton,
 } from "@mui/material";
-import DownloadIcon from "@mui/icons-material/Download";
 
 const TCList = ({ data, navigate }) => {
 
@@ -28,7 +27,7 @@ const TCList = ({ data, navigate }) => {
           <TableBody>
             {data.length > 0 ? (
               data.map((tc, index) => (
-                <TableRow key={index} hover onClick={() => { navigate(`/view/${tc.fullname}`, {state:tc._id})}}>
+                <TableRow key={index} hover onClick={() => { navigate(`/saved/${tc.fullname}`, {state:tc._id})}}>
                   <TableCell>{tc.pin}</TableCell>
                   <TableCell>{tc.fullname}</TableCell>
                   <TableCell>{tc.doiTC}</TableCell>

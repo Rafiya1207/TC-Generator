@@ -12,19 +12,6 @@ const Footer = () => {
         color: "white",
       }}
     >
-      {/* Footer Links */}
-      <Box sx={{ display: "flex", justifyContent: "center", gap: 4, mb: 2 }}>
-        <Link href="/help" sx={footerLinkStyle}>
-          Help
-        </Link>
-        <Link href="/about" sx={footerLinkStyle}>
-          About
-        </Link>
-        <Link href="/contact" sx={footerLinkStyle}>
-          Contact
-        </Link>
-      </Box>
-
       {/* Copyright */}
       <Typography variant="body2" sx={{ opacity: 0.9 }}>
         © {new Date().getFullYear()} TC Generator App | Version 1.0
