@@ -15,11 +15,9 @@ const ViewTCsPage = ({ navigate }) => {
 			});
 			const result = await res.json();
 			setData(result.data);
-			console.log(result);
 		};
 		getTCs();
 	}, []);
-	console.log(data);
 	
 	return (
 		<>

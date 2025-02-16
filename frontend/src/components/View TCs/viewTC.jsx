@@ -7,7 +7,6 @@ const ViewTC = () => {
 		const location = useLocation();
 		
 		useEffect(() => {
-			console.log('hello');
 			const getTC = async () => {
 				const res = await fetch(`http://localhost:5000/tc/${location.state}`, {
 					method: 'GET',
@@ -18,7 +17,6 @@ const ViewTC = () => {
 				});
 				const result = await res.json();
 				setTCData(result.data);
-				console.log(result);
 			};
 			getTC();
 		}, []);
