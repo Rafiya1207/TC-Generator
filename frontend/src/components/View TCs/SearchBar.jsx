@@ -7,16 +7,12 @@ const SearchBar = ({ data, setData }) => {
 	const [userInput, setUserInput] = useState("");
 
 	const handleSearch = () => {
-		const filteredData = [];
 		const search = userInput.toLowerCase();
-		data.forEach((item) => {
-			for (const key in item) {
-				if (item[key].toString().toLowerCase().includes(search)) {
-					filteredData.push(item);
-					break;
-				}
-			}
-		});
+		const filteredData = data.filter((item) =>
+			Object.values(item).some((value) =>
+				value.toString().toLowerCase().includes(search)
+			)
+		);
 		setData(filteredData);
 	};
 
