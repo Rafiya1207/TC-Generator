@@ -36,6 +36,7 @@ const SearchBar = ({ data, setData }) => {
 				placeholder="Search by Name, Date, Admission No..."
 				value={userInput}
 				onChange={(event) => setUserInput(event.target.value)}
+				onKeyDown={(event) => (event.key === "Enter") && handleSearch()}
 				sx={{
 					width: "80%",
 					maxWidth: "600px",
