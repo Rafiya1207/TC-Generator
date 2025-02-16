@@ -23,7 +23,7 @@ const ViewTCsPage = ({ navigate }) => {
 	
 	return (
 		<>
-			<SearchBar/>
+			<SearchBar data = {data} setData = {setData}/>
 			<TCList data = {data} navigate={navigate} />
 		</>
 	);
