@@ -4,12 +4,9 @@ import SearchIcon from "@mui/icons-material/Search";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 const SearchBar = ({ data, setData }) => {
-	const [search, setSearch] = useState("");
+	const [userInput, setUserInput] = useState("");
 
-	const handleSearch = (event) => {
-		const userInput = event.target.value;
-		console.log(data);
-
+	const handleSearch = () => {
 	};
 
 	return (
@@ -26,7 +23,8 @@ const SearchBar = ({ data, setData }) => {
 			<TextField
 				variant="outlined"
 				placeholder="Search by Name, Date, Admission No..."
-				value={search}
+				value={userInput}
+				onChange={(event) => setUserInput(event.target.value)}
 				sx={{
 					width: "80%",
 					maxWidth: "600px",
@@ -47,6 +45,7 @@ const SearchBar = ({ data, setData }) => {
 							<ArrowForwardIcon
 								color="primary"
 								sx={{ cursor: "pointer" }}
+								onClick={handleSearch}
 							/>
 						</InputAdornment>
 					),
