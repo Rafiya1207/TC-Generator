@@ -1,5 +1,4 @@
-import { Padding } from "@mui/icons-material";
-import { Box, Typography, Link } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 const Footer = () => {
   return (

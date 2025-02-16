@@ -1,8 +1,5 @@
-
-import TCForm from './components/Generate TC/TCForm.jsx';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import { UserDataProvider } from './context/UserDataContext.jsx';
-import CredentialsForm from './components/CredentialsForm';
 import CreateTC from './components/Generate TC/CreateTC.jsx';
 import TCDownloadPage from './components/TCDownloadPage.jsx';
 import ViewTCsPage from './components/View TCs/ViewTCsPage.jsx';
@@ -19,7 +16,6 @@ function App() {
 				<Route path='/dashboard' element={<Home />} />
 				<Route path='/create' element={<CreateTC navigate={navigate} />} />
 				<Route path='/saved/:id' element={<ViewTC/>} />
-				<Route path='/credentials' element={<CredentialsForm navigate={navigate} />} />
 				<Route path='/saved' element={<ViewTCsPage navigate={navigate} />} />
 				<Route path='/downloadTC' element={<TCDownloadPage />} />
 			</Routes>
