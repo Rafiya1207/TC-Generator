@@ -6,7 +6,7 @@ import { jsPDF } from 'jspdf';
 import { useLocation } from 'react-router-dom';
 import { UserDataContext } from '../context/UserDataContext.jsx';
 
-const TCDownloadPage = ({ setDoesGotResponse }) => {
+const TCDownloadPage = () => {
 	const printRef = useRef(null);
 	const location = useLocation();
 	const status = location.state;
@@ -59,7 +59,6 @@ const TCDownloadPage = ({ setDoesGotResponse }) => {
 
 	if (!status) {
 		message = 'OPPS! Server Issue, Unable to send Data';
-		buttonLabel = 'Go Back';
 	}
 
 	return (
