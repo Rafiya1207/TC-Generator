@@ -3,15 +3,13 @@ import '../../App.css';
 import MaterialRadioField from "../Material Form Elements/MaterialRadioField";
 import MaterialTextField from "../Material Form Elements/MaterialTextField";
 import MaterialButton from "../Material Form Elements/MaterialButton";
-import linkToPath from "../../functions/linkToPath.js";
 import { UserDataContext } from "../../context/UserDataContext.jsx";
-import TCDataConfirmationPopUP from "./TCDataConfirmationPopUp.jsx";
 
-const TCForm = ({ navigate, open }) => {
+const TCForm = ({ open }) => {
   const { userData, addUserData, removeUserData } = useContext(UserDataContext);
 
   return (
-    <form className="tc-form" onSubmit={(event) => linkToPath(event, '/preview', navigate)}>
+    <form className="tc-form">
       <h1 className="tc-form-heading">Fill Transfer Certificate Form</h1>
       <MaterialTextField
         label="Certificate Number"
