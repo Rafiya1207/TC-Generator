@@ -105,10 +105,11 @@ const TCDownloadPage = ({ setIsUnMounted }) => {
 						<Button variant="contained" color="primary" onClick={downloadPDF}>
 							{buttonLabel}
 						</Button>
+						<Button variant="outlined" color="secondary" onClick={() => { navigate('/dashboard') }}>
+							Back to Home
+						</Button>
 					</Box>
-					<Button variant="outlined" color="secondary" onClick={() => { navigate('/dashboard') }}>
-						Back to Home
-					</Button>
+
 				</Box>
 			</Box >
 		</Container >

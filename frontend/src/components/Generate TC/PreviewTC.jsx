@@ -1,6 +1,3 @@
-import { UserDataContext } from '../../context/UserDataContext.jsx';
-import { useContext } from 'react';
-
 const PreviewField = ({ fieldNumber, heading, value }) => {
 	return (
 		<div className="preview-field">
@@ -10,8 +7,7 @@ const PreviewField = ({ fieldNumber, heading, value }) => {
 	);
 }
 
-const PreviewTC = ({ printRef }) => {
-	const { userData } = useContext(UserDataContext);
+const PreviewTC = ({ printRef, userData }) => {
 
 	return (
 		<div ref={printRef} className="preview-document">
