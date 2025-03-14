@@ -111,7 +111,7 @@ const TCForm = ({ open }) => {
           listener={addUserData}
         />
         <MaterialRadioField
-          label="Whether you have applied for this certificate or it is being given Sumoto?"
+          label="Is it being given Sumoto?"
           name="isApplied"
           value={userData.isApplied}
           listener={addUserData}
