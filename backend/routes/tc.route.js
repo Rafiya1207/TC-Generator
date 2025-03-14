@@ -1,4 +1,4 @@
-import { TC, Certificate } from "../models/tc.model.js";
+import TC from "../models/tc.model.js";
 import express from "express";
 
 const router = express.Router();
@@ -58,38 +58,6 @@ router.post("/", async (req, res) => {
 	} catch (error) {
 		res.status(500).json({ success: false, message: "server error" });
 	}
-});
-
-router.get('/certificate/certificatenumber', async (req, res) => {
-  try {
-    let certificate = await Certificate.findOne();
-
-    if (!certificate) {
-      certificate = new Certificate({ certificateNumber: 500 });
-      await certificate.save();
-    }
-
-    res.status(200).json({ success: true, certificateNumber: certificate.certificateNumber });
-  } catch (error) {
-    res.status(500).json({ success: false, message: error.message });
-  }
-});
-
-router.post('/certificate/updateCertificateNumber', async (req, res) => {
-  try {
-    let certificate = await Certificate.findOne();
-
-    if (!certificate) {
-      certificate = new Certificate({ certificateNumber: 500 });
-    } else {
-      certificate.certificateNumber += 1;
-    }
-
-    await certificate.save();
-    res.status(200).json({ success: true, data: certificate.certificateNumber });
-  } catch (error) {
-    res.status(500).json({ success: false, message: error.message });
-  }
 });
 
 export default router;

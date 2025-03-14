@@ -73,14 +73,6 @@ const tcSchema = mongoose.Schema({
 	timestamps: true
 });
 
-const certificateSchema = mongoose.Schema({
-	certificateNumber: {
-		type: Number,
-		required: true
-	}
-}, {
-	timestamps: true
-});
+const TC = mongoose.model('TC', tcSchema);
 
-export const TC = mongoose.model('TC', tcSchema);
-export const Certificate = mongoose.model('Certificate', certificateSchema);
+export default TC;
