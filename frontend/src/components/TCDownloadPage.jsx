@@ -6,17 +6,20 @@ import { jsPDF } from 'jspdf';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { UserDataContext } from '../context/UserDataContext.jsx';
 
-const TCDownloadPage = () => {
+const TCDownloadPage = ({ setIsUnMounted }) => {
 	const printRef = useRef(null);
 	const location = useLocation();
 	const status = location.state;
 	const [contentHeight, setContentHeight] = useState('auto');
-	const { userData, updateCertificateNumber } = useContext(UserDataContext);
+	const { userData, removeUserData } = useContext(UserDataContext);
 	const navigate = useNavigate();
 
 	useEffect(() => {
 		if (printRef.current) {
 			setContentHeight(printRef.current.scrollHeight);
+		}
+		return () => { 
+			setIsUnMounted((prev) => !prev);
 		}
 	}, [status]);
 
@@ -26,7 +29,7 @@ const TCDownloadPage = () => {
 
 		const canvas = await html2canvas(element, {
 			scale: 3,
-			useCORS: true, 
+			useCORS: true,
 		});
 
 		const dataImage = canvas.toDataURL('image/png');
@@ -55,7 +58,6 @@ const TCDownloadPage = () => {
 
 	let message = 'Your TC is Successfully Created';
 	let buttonLabel = 'Download TC';
-	let buttonListener = downloadPDF;
 
 	if (!status) {
 		message = 'OPPS! Server Issue, Unable to send Data';
@@ -83,33 +85,33 @@ const TCDownloadPage = () => {
 							width: '100%',
 							maxWidth: '794px',
 							minHeight: 'auto',
-							height: contentHeight, 
-							overflow: 'visible', 
+							height: contentHeight,
+							overflow: 'visible',
 							padding: 2,
 							backgroundColor: '#fff',
 							display: 'flex',
 							flexDirection: 'column',
 						}}
 					>
-						<PreviewTC userData={userData}/>
+						<PreviewTC userData={userData} />
+						<Box sx={{ textAlign: 'center' }}>
+							<Typography variant="body1" color="error" gutterBottom>
+								Once you go back you can't download this TC again, so download it now.
+							</Typography>
+							<Box sx={{ display: 'flex', justifyContent: 'center', gap: 2 }}>
+								<Button variant="contained" color="primary" onClick={downloadPDF}>
+									{buttonLabel}
+								</Button>
+							</Box>
+						</Box>
 					</Box>
 				)}
 
-				<Box sx={{ textAlign: 'center' }}>
-					<Typography variant="body1" color="error" gutterBottom>
-						Once you go back you can't download this TC again, so download it now.
-					</Typography>
-					<Box sx={{ display: 'flex', justifyContent: 'center', gap: 2 }}>
-						<Button variant="contained" color="primary" onClick={buttonListener}>
-							{buttonLabel}
-						</Button>
-						<Button variant="outlined" color="secondary" onClick={() => { navigate('/dashboard'); updateCertificateNumber(); }}>
-							Back to Home
-						</Button>
-					</Box>
-				</Box>
-			</Box>
-		</Container>
+				<Button variant="outlined" color="secondary" onClick={() => { navigate('/dashboard')}}>
+					Back to Home
+				</Button>
+		</Box >
+		</Container >
 	);
 };
 

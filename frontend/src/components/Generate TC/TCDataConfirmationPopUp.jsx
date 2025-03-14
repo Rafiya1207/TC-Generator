@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { UserDataContext } from "../../context/UserDataContext";
 
 function TCDataConfirmationPopUp({ isTCSubmitted, close, confirm }) {
-	const { userData, addUserData } = useContext(UserDataContext);
+	const { userData } = useContext(UserDataContext);
 	const [isSubmitted, setIsSubmitted] = useState(false);
 
 	useEffect(() => {
@@ -20,7 +20,6 @@ function TCDataConfirmationPopUp({ isTCSubmitted, close, confirm }) {
 					body: JSON.stringify(userData)
 				});
 
-				console.log(res);
 				confirm(res.ok)
 			} catch (error) {
 				console.error("Error posting TC:", error);
