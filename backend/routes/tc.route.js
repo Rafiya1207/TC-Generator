@@ -69,7 +69,7 @@ router.get('/certificate/certificatenumber', async (req, res) => {
       await certificate.save();
     }
 
-    res.status(200).json({ success: true, data: certificate.certificateNumber });
+    res.status(200).json({ success: true, certificateNumber: certificate.certificateNumber });
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });
   }
