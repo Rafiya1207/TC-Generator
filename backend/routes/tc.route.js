@@ -1,9 +1,9 @@
-import TC from "../models/tc.model.js";
-import express from 'express';
+import { TC, Certificate } from "../models/tc.model.js";
+import express from "express";
 
 const router = express.Router();
 
-router.get('/', async (req, res) => {
+router.get("/", async (req, res) => {
 	try {
 		const tcs = await TC.find({});
 		res.status(200).json({ success: true, data: tcs });
@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
 	}
 });
 
-router.get('/:id', async (req, res) => {
+router.get("/:id", async (req, res) => {
 	try {
 		const { id } = req.params;
 		const tc = await TC.findById(id);
@@ -21,25 +21,75 @@ router.get('/:id', async (req, res) => {
 		}
 		res.status(200).json({ success: true, data: tc });
 	} catch (error) {
-		res.status(500).json({ success: false, message: "server error" });
+		res.status(500).json({ success: false, message: "server" });
 	}
 });
 
-router.post('/', async (req, res) => {
+router.post("/", async (req, res) => {
 	const tc = req.body;
 	console.log(tc);
 
-	if (!tc.certificateNumber && !tc.admissionNumber && !tc.fullname && !tc.fatherName && !tc.nationality && !tc.religion && !tc.caste && !tc.dob && !tc.doa && !tc.dol && !tc.doiTC && !tc.yearSem && !tc.course && !tc.pin && !tc.isPromoted && !tc.isPaidFee && !tc.isApplied) {
+	if (
+		!tc.certificateNumber ||
+		!tc.admissionNumber ||
+		!tc.fullname ||
+		!tc.fatherName ||
+		!tc.nationality ||
+		!tc.religion ||
+		!tc.caste ||
+		!tc.dob ||
+		!tc.doa ||
+		!tc.dol ||
+		!tc.doiTC ||
+		!tc.yearSem ||
+		!tc.course ||
+		!tc.pin ||
+		!tc.isPromoted ||
+		!tc.isPaidFee ||
+		!tc.isApplied
+	) {
 		return res.status(400).json({ success: false, message: "provide fields" });
 	}
 
 	const newTC = new TC(tc);
 	try {
 		await newTC.save();
-		res.status(201).json({ success: true, data: newTC })
+		res.status(201).json({ success: true, data: newTC });
 	} catch (error) {
-		res.status(500).json({ success: false, message: 'server error' })
+		res.status(500).json({ success: false, message: "server error" });
 	}
+});
+
+router.get('/certificate/certificatenumber', async (req, res) => {
+  try {
+    let certificate = await Certificate.findOne();
+
+    if (!certificate) {
+      certificate = new Certificate({ certificateNumber: 500 });
+      await certificate.save();
+    }
+
+    res.status(200).json({ success: true, data: certificate.certificateNumber });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+});
+
+router.post('/updateCertificateNumber', async (req, res) => {
+  try {
+    let certificate = await Certificate.findOne();
+
+    if (!certificate) {
+      certificate = new Certificate({ certificateNumber: 500 });
+    } else {
+      certificate.certificateNumber += 1;
+    }
+
+    await certificate.save();
+    res.status(200).json({ success: true, data: certificate.certificateNumber });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
 });
 
 export default router;
