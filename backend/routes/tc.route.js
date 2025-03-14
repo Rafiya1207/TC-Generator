@@ -75,7 +75,7 @@ router.get('/certificate/certificatenumber', async (req, res) => {
   }
 });
 
-router.post('/updateCertificateNumber', async (req, res) => {
+router.post('/certificate/updateCertificateNumber', async (req, res) => {
   try {
     let certificate = await Certificate.findOne();
 
