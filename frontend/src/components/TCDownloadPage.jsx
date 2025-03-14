@@ -3,19 +3,20 @@ import { Button, Typography, Box, Container } from '@mui/material';
 import PreviewTC from './Generate TC/PreviewTC.jsx';
 import html2canvas from 'html2canvas';
 import { jsPDF } from 'jspdf';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { UserDataContext } from '../context/UserDataContext.jsx';
 
 const TCDownloadPage = () => {
 	const printRef = useRef(null);
 	const location = useLocation();
 	const status = location.state;
-	const [contentHeight, setContentHeight] = useState('auto'); // Adjust content height dynamically
+	const [contentHeight, setContentHeight] = useState('auto');
 	const { userData } = useContext(UserDataContext);
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		if (printRef.current) {
-			setContentHeight(printRef.current.scrollHeight); // Get full height of content
+			setContentHeight(printRef.current.scrollHeight);
 		}
 	}, [status]);
 
@@ -24,8 +25,8 @@ const TCDownloadPage = () => {
 		if (!element) return;
 
 		const canvas = await html2canvas(element, {
-			scale: 3, // Higher quality capture
-			useCORS: true, // Handle images and styles properly
+			scale: 3,
+			useCORS: true, 
 		});
 
 		const dataImage = canvas.toDataURL('image/png');
@@ -41,7 +42,6 @@ const TCDownloadPage = () => {
 		const imgWidth = canvas.width;
 		const imgHeight = canvas.height;
 
-		// Scale content properly to fit into A4 dimensions
 		const scaleFactor = pdfWidth / imgWidth;
 		const scaledHeight = imgHeight * scaleFactor;
 
@@ -76,16 +76,15 @@ const TCDownloadPage = () => {
 					{message}
 				</Typography>
 
-				{/* Fix: Ensure the preview is fully visible without cutting */}
 				{status && (
 					<Box
 						ref={printRef}
 						sx={{
 							width: '100%',
-							maxWidth: '794px', // Matches A4 width
+							maxWidth: '794px',
 							minHeight: 'auto',
-							height: contentHeight, // Set dynamically
-							overflow: 'visible', // Ensures nothing is hidden
+							height: contentHeight, 
+							overflow: 'visible', 
 							padding: 2,
 							backgroundColor: '#fff',
 							display: 'flex',
@@ -96,10 +95,18 @@ const TCDownloadPage = () => {
 					</Box>
 				)}
 
-				<Box sx={{ mt: 4 }}>
-					<Button variant="contained" color="primary" onClick={buttonListener}>
-						{buttonLabel}
-					</Button>
+				<Box sx={{ textAlign: 'center' }}>
+					<Typography variant="body1" color="error" gutterBottom>
+						Once you go back you can't download this TC again, so download it now.
+					</Typography>
+					<Box sx={{ display: 'flex', justifyContent: 'center', gap: 2 }}>
+						<Button variant="contained" color="primary" onClick={buttonListener}>
+							{buttonLabel}
+						</Button>
+						<Button variant="outlined" color="secondary" onClick={() => navigate('/dashboard')}>
+							Back to Home
+						</Button>
+					</Box>
 				</Box>
 			</Box>
 		</Container>
