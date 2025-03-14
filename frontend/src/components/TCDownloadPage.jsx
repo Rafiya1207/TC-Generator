@@ -18,7 +18,7 @@ const TCDownloadPage = ({ setIsUnMounted }) => {
 		if (printRef.current) {
 			setContentHeight(printRef.current.scrollHeight);
 		}
-		return () => { 
+		return () => {
 			setIsUnMounted((prev) => !prev);
 		}
 	}, [status]);
@@ -94,23 +94,23 @@ const TCDownloadPage = ({ setIsUnMounted }) => {
 						}}
 					>
 						<PreviewTC userData={userData} />
-						<Box sx={{ textAlign: 'center' }}>
-							<Typography variant="body1" color="error" gutterBottom>
-								Once you go back you can't download this TC again, so download it now.
-							</Typography>
-							<Box sx={{ display: 'flex', justifyContent: 'center', gap: 2 }}>
-								<Button variant="contained" color="primary" onClick={downloadPDF}>
-									{buttonLabel}
-								</Button>
-							</Box>
-						</Box>
 					</Box>
 				)}
 
-				<Button variant="outlined" color="secondary" onClick={() => { navigate('/dashboard')}}>
-					Back to Home
-				</Button>
-		</Box >
+				<Box sx={{ textAlign: 'center' }}>
+					<Typography variant="body1" color="error" gutterBottom>
+						Once you go back you can't download this TC again, so download it now.
+					</Typography>
+					<Box sx={{ display: 'flex', justifyContent: 'center', gap: 2 }}>
+						<Button variant="contained" color="primary" onClick={downloadPDF}>
+							{buttonLabel}
+						</Button>
+					</Box>
+					<Button variant="outlined" color="secondary" onClick={() => { navigate('/dashboard') }}>
+						Back to Home
+					</Button>
+				</Box>
+			</Box >
 		</Container >
 	);
 };
