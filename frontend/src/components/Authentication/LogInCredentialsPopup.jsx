@@ -4,13 +4,14 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import isPassword from "../../functions/checkPassword.js";
 
-const LogInCredentialsPopup = ({ isClickedLogin, close }) => {
+const LogInCredentialsPopup = ({ isClickedLogin, close, setIsLogged }) => {
 	const [userPassword, setUserPassword] = useState('');
 	const changePassword = (e) => setUserPassword(e.target.value);
 	const [dialogTitle, setDialogTitle] = useState(true);
 	const navigate = useNavigate();
 	const verifyPassword = () => {
 		if (isPassword(userPassword)) navigate('/dashboard');
+		setIsLogged(true);
 		setDialogTitle(false);
 	}
 	return (

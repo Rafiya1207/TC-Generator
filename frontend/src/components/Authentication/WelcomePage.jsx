@@ -2,7 +2,7 @@ import { Box, Button, Typography } from "@mui/material";
 import { useState } from "react";
 import LogInCredentialsPopup from './LogInCredentialsPopup.jsx'
 
-const WelcomePage = () => {
+const WelcomePage = ({ setIsLogged }) => {
 	const [isClickedLogin, setIsClickedLogIn] = useState(false);
 	const close = () => setIsClickedLogIn(false)
 	return (
@@ -56,7 +56,7 @@ const WelcomePage = () => {
 				</Box>
 			</Box>
 			{
-				isClickedLogin && <LogInCredentialsPopup isClickedLogin = {isClickedLogin} close={close} />
+				isClickedLogin && <LogInCredentialsPopup isClickedLogin = {isClickedLogin} setIsLogged={setIsLogged} close={close} />
 			}
 		</>
 
