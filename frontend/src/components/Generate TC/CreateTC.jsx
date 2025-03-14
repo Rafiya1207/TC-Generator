@@ -18,7 +18,6 @@ const CreateTC = ({ navigate }) => {
   const handleConfirm = ( status ) => {
     setIsTCSubmitted(false);
 		navigate('/downloadTC', { state: status });
-		// updateTCForm();
   };
 
 	return (
