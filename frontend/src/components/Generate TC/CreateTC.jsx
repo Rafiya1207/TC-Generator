@@ -4,7 +4,7 @@ import { useState, useContext } from 'react';
 import TCDataConfirmationPopUp from './TCDataConfirmationPopUp.jsx';
 import { UserDataContext } from '../../context/UserDataContext.jsx';
 const CreateTC = ({ navigate }) => {
-	const { userData } = useContext(UserDataContext);
+	const { userData, updateTCForm } = useContext(UserDataContext);
 
 	const [ isTCSubmitted, setIsTCSubmitted ] = useState(false);
 	const handleOpen = () => {
@@ -18,6 +18,7 @@ const CreateTC = ({ navigate }) => {
   const handleConfirm = ( status ) => {
     setIsTCSubmitted(false);
 		navigate('/downloadTC', { state: status });
+		// updateTCForm();
   };
 
 	return (

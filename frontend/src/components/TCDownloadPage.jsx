@@ -11,7 +11,7 @@ const TCDownloadPage = () => {
 	const location = useLocation();
 	const status = location.state;
 	const [contentHeight, setContentHeight] = useState('auto');
-	const { userData } = useContext(UserDataContext);
+	const { userData, updateCertificateNumber } = useContext(UserDataContext);
 	const navigate = useNavigate();
 
 	useEffect(() => {
@@ -103,7 +103,7 @@ const TCDownloadPage = () => {
 						<Button variant="contained" color="primary" onClick={buttonListener}>
 							{buttonLabel}
 						</Button>
-						<Button variant="outlined" color="secondary" onClick={() => navigate('/dashboard')}>
+						<Button variant="outlined" color="secondary" onClick={() => { navigate('/dashboard'); updateCertificateNumber(); }}>
 							Back to Home
 						</Button>
 					</Box>

@@ -12,12 +12,6 @@ const TCForm = ({ open }) => {
     <form className="tc-form">
       <h1 className="tc-form-heading">Fill Transfer Certificate Form</h1>
       <MaterialTextField
-        label="Certificate Number"
-        name="certificateNumber"
-        value={userData.certificateNumber}
-        listener={addUserData}
-      />
-      <MaterialTextField
         label="Admission Number"
         name="admissionNumber"
         value={userData.admissionNumber}

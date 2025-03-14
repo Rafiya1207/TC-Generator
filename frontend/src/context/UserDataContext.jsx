@@ -4,7 +4,7 @@ export const UserDataContext = createContext();
 
 export const UserDataProvider = ({ children }) => {
 	const [userData, setUserData] = useState({
-		certificateNumber: '',
+		certificateNumber: 500,
 		admissionNumber: '',
 		fullname: '',
 		fatherName: '',
@@ -33,7 +33,6 @@ export const UserDataProvider = ({ children }) => {
 	const removeUserData = () => {
 		setUserData((prevData) => ({
 			...prevData,
-			certificateNumber: '',
 			admissionNumber: '',
 			fullname: '',
 			fatherName: '',
@@ -51,10 +50,17 @@ export const UserDataProvider = ({ children }) => {
 			isPaidFee: '',
 			isApplied: '',
 		}));
+	}
+
+	const updateCertificateNumber = () => {
+		// removeUserData()
+		setUserData((prevData) => ({
+			...prevData,
+			certificateNumber: userData.certificateNumber + 1 }))
 	};
 
 	return (
-		<UserDataContext.Provider value={{ userData, addUserData, removeUserData }}>
+		<UserDataContext.Provider value={{ userData, addUserData, removeUserData, updateCertificateNumber }}>
 			{children}
 		</UserDataContext.Provider>
 	);

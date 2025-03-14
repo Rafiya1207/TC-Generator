@@ -5,8 +5,6 @@ import { UserDataContext } from "../../context/UserDataContext";
 function TCDataConfirmationPopUp({ isTCSubmitted, close, confirm }) {
 	const { userData, addUserData } = useContext(UserDataContext);
 	const [isSubmitted, setIsSubmitted] = useState(false);
-	const [status, setStatus] = useState(false);
-
 
 	useEffect(() => {
 		if (!isSubmitted) return;
