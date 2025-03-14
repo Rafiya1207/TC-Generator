@@ -38,10 +38,6 @@ const CreateTC = ({ navigate, isUnMounted }) => {
 		};
 		getTCs();
 	}, [isUnMounted]);
-
-	useEffect(() => {
-		removeUserData();	
-	}, []);
 	
 	return (
 		<div style={{ display: 'flex' }}>
