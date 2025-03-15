@@ -6,7 +6,7 @@ import { UserDataContext } from '../../context/UserDataContext.jsx';
 
 const CreateTC = ({ navigate, isUnMounted }) => {
 	const [isTCSubmitted, setIsTCSubmitted] = useState(false);
-	const { setUserData, removeUserData } = useContext(UserDataContext);
+	const { userData, setUserData } = useContext(UserDataContext);
 	
 	const handleOpen = () => {
 		setIsTCSubmitted(true);
@@ -42,7 +42,7 @@ const CreateTC = ({ navigate, isUnMounted }) => {
 	return (
 		<div style={{ display: 'flex' }}>
 			<TCForm navigate={navigate} open={handleOpen} />
-			<PreviewTC/>
+			<PreviewTC userData={userData}/>
 			{isTCSubmitted && <TCDataConfirmationPopUp close={handleClose} confirm={handleConfirm} isTCSubmitted={isTCSubmitted} />}
 		</div>
 	);
